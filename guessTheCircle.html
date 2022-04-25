@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charse
+    t="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guess the circle</title>
+    <link rel="stylesheet" href="guessTheCircle.css">
+</head>
+<body>
+    <h1>Guess The Circle Game</h1>
+    <p>This is a fun game that allows you to guess the 
+        correct circle in a 3x3 cicle grid. You get 3 tries and if you
+        pick all 3 correctly, you win a prize... A displayed image and
+        the screen has ballons and stuff. If you lose, everything goes
+        red. Later on I could add a web3 adaptation for winner to win 
+        an NFT.</p>
+    <div class="wrapper">
+        <div class="circle" id="1"></div>
+        <div class="circle" id="2"></div>
+        <div class="circle" id="3"></div>
+        <div class="circle" id="4"></div>
+        <div class="circle" id="5"></div>
+        <div class="circle" id="6"></div>
+        <div class="circle" id="7"></div>
+        <div class="circle" id="8"></div>
+        <div class="circle" id="9"></div>
+    </div>
+    <div class="button-wrapper">
+        <button id="button" onclick="buttonHandler"> Play Again </button>
+    </div>
+<script>
+    let randomNumber1 = Math.floor(Math.random()*9) + 1;//Gives a random number up to 9
+    let randomNumber2 = Math.floor(Math.random()*9) + 1;
+    while (randomNumber1 == randomNumber2){
+        randomNumber2 = Math.floor(Math.random()*9) + 1;
+        console.log("Random number 1 was the same as random number 2")
+    }
+    let randomNumber3 = Math.floor(Math.random()*9) + 1;
+    while (randomNumber3 == randomNumber1 || randomNumber3 == randomNumber2){
+        randomNumber3 = Math.floor(Math.random() *9) + 1;
+        console.log("Random number 3 was the same as random number or one")
+
+    }
+    let count = 0;
+    let countCorrect = 0;
+    window.addEventListener("click", (event) => {
+        console.log(randomNumber1, randomNumber2, randomNumber3);
+        // These 3 random numbers are the winning numbers.
+        // User should be able to click on individual circles
+        // If they are right it changes colour, green tick below appear to track there tries 
+        // If next circle chosen is wrong, the next tick will be a red x. Tries are on the bottom, on the same horizontal row
+        
+        //Count should only be increased if the circles are clicked.
+        count += 1
+        console.log(count)
+        const newDiv = document.createElement("div");
+        let divCountText = document.createTextNode(`Tries: ${count}`);
+        newDiv.appendChild(divCountText);
+        const divWrapper = document.getElementById("wrapper")
+        newDiv.style.margin = "auto";
+        newDiv.style.width = "25%";
+        document.body.insertBefore(newDiv, divWrapper)
+
+        const chosenElement = event.target;
+        if (parseInt(chosenElement.id) === randomNumber1 || parseInt(chosenElement.id) === randomNumber2 || parseInt(chosenElement.id) === randomNumber3 ){
+            chosenElement.style.borderColor="green";
+            countCorrect +=1;
+            console.log("Correct!");
+            // Circular icons appear, green tick if correct, red if incorrect
+        } else {
+            console.log("Incorrect!")
+        }
+
+        if (countCorrect == 3){
+            setTimeout( ()=>{
+                alert(`Congratulations, you have guessed all 3 circles in ${count} tries! :D`);
+            }, 10)
+            // As the browser does not have the time to update before the alert fires
+            // Using a timeout delays the alert until the next tick when the repain has completed.
+            console.log("Game Complete, all circles guessed !");
+            
+            //change background colour
+            //Button appears, to play again - Button resets the game
+            const button = document.getElementsByTagName("button");
+
+        }
+        setTimeout(() =>{
+            newDiv.removeChild(divCountText)}, 1000);
+    })
+    
+
+</script>
+</body>
+</html>

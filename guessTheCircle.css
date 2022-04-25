@@ -1,0 +1,35 @@
+html {
+    font-size: 15px;
+    background: url(https://images.unsplash.com/photo-1579546929662-711aa81148cf?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8Y29sb3JmdWwlMjBiYWNrZ3JvdW5kfGVufDB8fDB8fA%3D%3D&w=1000&q=80);
+    background-size: cover;
+    background-repeat: no-repeat;
+}
+
+.wrapper {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 10px;
+}
+
+.circle {
+    height: 30px;
+    width: 30px;
+    border-radius: 50%;
+    color: aqua;
+    border: 20px solid purple
+}
+
+.button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#button {
+    /* display: none; */
+    background-color: yellow;
+    /* border: 50% solid red 10px; */
+    margin-top: 10px;
+    border-radius: 20%;
+    border: none
+}
