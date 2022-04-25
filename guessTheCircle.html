@@ -31,6 +31,11 @@
         <button id="button" onclick="buttonHandler"> Play Again </button>
     </div>
 <script>
+    //TODO: split JavaScript code
+    function buttonHandler(){
+        //TODO: button does not work
+        window.location.reload() //This reloads the page which might not be good
+    }
     let randomNumber1 = Math.floor(Math.random()*9) + 1;//Gives a random number up to 9
     let randomNumber2 = Math.floor(Math.random()*9) + 1;
     while (randomNumber1 == randomNumber2){
@@ -45,14 +50,11 @@
     }
     let count = 0;
     let countCorrect = 0;
+
     window.addEventListener("click", (event) => {
         console.log(randomNumber1, randomNumber2, randomNumber3);
-        // These 3 random numbers are the winning numbers.
-        // User should be able to click on individual circles
-        // If they are right it changes colour, green tick below appear to track there tries 
-        // If next circle chosen is wrong, the next tick will be a red x. Tries are on the bottom, on the same horizontal row
         
-        //Count should only be increased if the circles are clicked.
+        //TODO: Count should only be increased if the circles are clicked.
         count += 1
         console.log(count)
         const newDiv = document.createElement("div");

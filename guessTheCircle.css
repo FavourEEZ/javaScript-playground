@@ -16,7 +16,8 @@ html {
     width: 30px;
     border-radius: 50%;
     color: aqua;
-    border: 20px solid purple
+    border: 20px solid purple;
+    cursor: pointer;
 }
 
 .button-wrapper {
@@ -30,6 +31,7 @@ html {
     background-color: yellow;
     /* border: 50% solid red 10px; */
     margin-top: 10px;
-    border-radius: 20%;
-    border: none
+    border-radius: 0%;
+    border: none;
+    padding: 15px 32px;
 }
