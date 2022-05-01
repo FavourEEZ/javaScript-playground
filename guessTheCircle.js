@@ -1,9 +1,23 @@
 function resetPage(){
     //TODO: Reset changes made and start again... either find a function that exists or make one to intialise everything
-    window.location.reload() 
+    window.location.reload();
+    count = 0;
+    countCorrect = 0;
+    let colour = "#800080";
+    let size = "20px";
+    
 }
 
-function wrapperListener(event) {
+function colourChange(){
+    const suffix = this.dataset.sizing || "";
+    document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+}
+
+function randomiseNumbers(){
+    //TODO: modularise randomising numbers
+}
+
+function whenCircleClicked(event){
     console.log(randomNumber1, randomNumber2, randomNumber3);
     
     count += 1
@@ -23,6 +37,7 @@ function wrapperListener(event) {
         //TODO Circular icons appear, green tick if correct, red if incorrect
     } else {
         console.log("Incorrect!")
+        this.style.visibility = "hidden"
     }
     if (countCorrect == 3){
         setTimeout( ()=>{
@@ -42,12 +57,6 @@ function wrapperListener(event) {
         newDiv.removeChild(divCountText)}, 1000);
 }
 
-function colourChange(){
-    const suffix = this.dataset.sizing || "";
-    document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
-    // document.documentElement.style.setProperty(`${this.names}`)
-}
-
 let randomNumber1 = Math.floor(Math.random()*9) + 1;//Gives a random number up to 9
 let randomNumber2 = Math.floor(Math.random()*9) + 1;
 while (randomNumber1 == randomNumber2){
@@ -61,15 +70,19 @@ while (randomNumber3 == randomNumber1 || randomNumber3 == randomNumber2){
     console.log("Random number 3 was the same as random number or one")
 
 }
+
+//main code
 let count = 0;
 let countCorrect = 0;
 let gameOver = false
 
 
 const divWrapper = document.getElementsByClassName("wrapper")[0]
-divWrapper.addEventListener("click", wrapperListener )
+//divWrapper.addEventListener("click", wrapperListener )
 
 const inputs = document.querySelectorAll('.controls input');
 inputs.forEach(input => input.addEventListener("change", colourChange))
 inputs.forEach(input => input.addEventListener('mousemove', colourChange));
 
+let circles = document.querySelectorAll('.wrapper div');
+circles.forEach(circle => circle.addEventListener("click", whenCircleClicked));

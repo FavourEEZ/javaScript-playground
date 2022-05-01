@@ -36,6 +36,7 @@ function changeProfile(event){
         alert("You are not signed in!")
         }
     }
+    
 function displayCaption(event){
     // let text = document.querySelectorAll("img-details");
     let text = document.getElementById("img-details")

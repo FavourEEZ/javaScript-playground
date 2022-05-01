@@ -14,9 +14,10 @@ html {
 }
 
 .circle {
+    visibility: visible;
     height: 30px;
     width: 30px;
-    margin: 100px;
+    margin: 10px;
     border-radius: 50%;
     color: aqua;
     border: var(--circleSize) solid var(--colourChange);
@@ -30,15 +31,20 @@ html {
 }
 
 #button {
-    /* display: none; */
+    visibility: visible;
+    border-radius: 8px;
     background-color: yellow;
     /* border: 50% solid red 10px; */
     margin-top: 20px;
-    border-radius: 0%;
     border: none;
     padding: 15px 32px;
+    cursor: pointer;
+    
 }
 
+#button:hover{
+    box-shadow: rgb(255, 0, 174) 0px 1px 30px;
+}
 /* Using css variables */
 :root {
     --colourChange: #800080;
