@@ -16,6 +16,7 @@ html {
 .circle {
     height: 30px;
     width: 30px;
+    margin: 100px;
     border-radius: 50%;
     color: aqua;
     border: var(--circleSize) solid var(--colourChange);
@@ -40,7 +41,7 @@ html {
 
 /* Using css variables */
 :root {
-    --colourChange: purple;
+    --colourChange: #800080;
     --circleSize: 20px;
 }
 

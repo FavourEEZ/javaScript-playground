@@ -43,8 +43,9 @@ function wrapperListener(event) {
 }
 
 function colourChange(){
-    document.documentElement.style.setProperty(`--${this.name}`, this.value)
-    //document.documentElement.style.setProperty()
+    const suffix = this.dataset.sizing || "";
+    document.documentElement.style.setProperty(`--${this.name}`, this.value + suffix)
+    // document.documentElement.style.setProperty(`${this.names}`)
 }
 
 let randomNumber1 = Math.floor(Math.random()*9) + 1;//Gives a random number up to 9
@@ -68,5 +69,7 @@ let gameOver = false
 const divWrapper = document.getElementsByClassName("wrapper")[0]
 divWrapper.addEventListener("click", wrapperListener )
 
-const input = document.getElementById('colourChange');
-input.addEventListener("change", colourChange)
+const inputs = document.querySelectorAll('.controls input');
+inputs.forEach(input => input.addEventListener("change", colourChange))
+inputs.forEach(input => input.addEventListener('mousemove', colourChange));
+
