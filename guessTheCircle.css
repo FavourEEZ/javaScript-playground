@@ -18,7 +18,7 @@ html {
     width: 30px;
     border-radius: 50%;
     color: aqua;
-    border: 20px solid purple;
+    border: var(--circleSize) solid var(--colourChange);
     cursor: pointer;
 }
 
@@ -32,8 +32,15 @@ html {
     /* display: none; */
     background-color: yellow;
     /* border: 50% solid red 10px; */
-    margin-top: 10px;
+    margin-top: 20px;
     border-radius: 0%;
     border: none;
     padding: 15px 32px;
 }
+
+/* Using css variables */
+:root {
+    --colourChange: purple;
+    --circleSize: 20px;
+}
+
