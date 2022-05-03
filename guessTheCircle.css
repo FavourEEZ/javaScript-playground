@@ -51,3 +51,8 @@ html {
     --circleSize: 20px;
 }
 
+.fa-solid {
+    visibility: visible;
+
+}
+

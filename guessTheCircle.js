@@ -1,3 +1,4 @@
+//TODO Epic Goal: Add a timer... could be a clock or a moving or text increasing.
 function resetPage(){
     window.location.reload();    
 }
@@ -36,6 +37,10 @@ function whenCircleClicked(event){
         newDiv.style.margin = "auto";
         newDiv.style.width = "25%";
         document.body.insertBefore(newDiv, divWrapper)
+
+        const iconWrapper = document.getElementById("icon-wrapper")
+        let iTag = document.createElement('i');
+        iTag.classList.add('fa-solid');
     
         setTimeout(() =>{
             newDiv.removeChild(divCountText)}, 1000);
@@ -45,13 +50,18 @@ function whenCircleClicked(event){
             chosenElement.style.borderColor="green";
             countCorrect +=1;
             console.log("Correct!");
+            iTag.classList.add('fa-circle-check');
+            iconWrapper.appendChild(iTag)
             //TODO Circular icons appear, green tick if correct, red if incorrect
         } else {
             console.log("Incorrect!")
             this.style.visibility = "hidden"
+            iTag.classList.add('fa-circle-xmark');
+            iconWrapper.appendChild(iTag)
+
         }    
     }
-    else if (countCorrect == 3){
+    if (countCorrect == 3){
         setTimeout( ()=>{
             alert(`Congratulations, you have guessed all 3 circles in ${count} tries! :D`);
         }, 10)
@@ -59,7 +69,7 @@ function whenCircleClicked(event){
         // Using a timeout delays the alert until the next tick when the repain has completed.
         console.log("Game Complete, all circles guessed !");
         
-        //change background colour -- confetti
+        //TODO: change background colour -- confetti
         const button = document.getElementsByTagName("button");
         gameOver = true
 
@@ -74,6 +84,13 @@ let numbers = randomiseNumbers();
 let randomNumber1 = numbers[0];
 let randomNumber2 = numbers[1];
 let randomNumber3 = numbers[2];
+
+//Removing the original icons that are in the DOM before the program starts
+//So that only the icons which we want are shown
+const elements = document.getElementsByClassName('fa-solid');
+while(elements.length > 0){
+    elements[0].parentNode.removeChild(elements[0]);
+}
 
 const divWrapper = document.getElementsByClassName("wrapper")[0]
 
