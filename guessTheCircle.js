@@ -90,7 +90,7 @@ let randomNumber3 = numbers[2];
 const elements = document.getElementsByClassName('fa-solid');
 while(elements.length > 0){
     elements[0].parentNode.removeChild(elements[0]);
-}
+} //A better ES6 way document.querySelectorAll(".remove").forEach(el => el.remove());
 
 const divWrapper = document.getElementsByClassName("wrapper")[0]
 

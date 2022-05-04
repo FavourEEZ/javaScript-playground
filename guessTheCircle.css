@@ -6,6 +6,17 @@ html {
     text-align: center;
 }
 
+kbd {
+    /* padding-right: 200px; */
+    text-align: left;
+    background-color: black;
+    opacity: 0.3;
+    color: white;
+    border-radius: 10%;
+    font-size: large;
+}
+
+
 .wrapper {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
