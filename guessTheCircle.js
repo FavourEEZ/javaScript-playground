@@ -53,7 +53,7 @@ function whenCircleClicked(event){
             console.log("Correct!");
             iTag.classList.add('fa-circle-check');
             iconWrapper.appendChild(iTag)
-
+            playSound()
 
         } else {
             console.log("Incorrect!")
@@ -78,17 +78,10 @@ function whenCircleClicked(event){
     }
 }
 
-function playSound(event){
-    console.log(`Keydown event: ${event.key}`)
-    if (event.key == "Escape"){
-        console.log("Escape!!")
-        const audio = document.querySelector(`audio[data-char="${event.key}"]`)
-        // audio.currentTime = 0;
+function playSound(){
+        //const audio = document.querySelector(`audio[data-char="${event.key}"]`)
+        const audio = document.querySelector(`audio[data-char="Escape"]`)
         audio.play();
-        setTimeout(()=>{
-            resetPage();
-        }, 100)
-    }
 }
 
 //main code
@@ -116,9 +109,8 @@ inputs.forEach(input => input.addEventListener('mousemove', colourChange));
 let circles = document.querySelectorAll('.wrapper div');
 circles.forEach(circle => circle.addEventListener("click", whenCircleClicked));
 
-window.addEventListener("keydown", (event)=>{
-    playSound(event);
-    setTimeout(()=>{
-        resetPage();
-    }, 100)
+window.addEventListener("keydown", (event) =>{
+    if (event.key == "Escape"){
+            resetPage();
+    }
 })
