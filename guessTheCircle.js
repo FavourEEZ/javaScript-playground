@@ -26,7 +26,7 @@ function randomiseNumbers(){
 }
 
 function whenCircleClicked(event){
-    console.log(randomNumber1, randomNumber2, randomNumber3);
+    //console.log(randomNumber1, randomNumber2, randomNumber3);
 
     if (countCorrect != 3){
         count += 1
@@ -51,15 +51,19 @@ function whenCircleClicked(event){
             chosenElement.style.borderColor="green";
             countCorrect +=1;
             console.log("Correct!");
+
             iTag.classList.add('fa-circle-check');
-            iconWrapper.appendChild(iTag)
+            iconWrapper.appendChild(iTag);
+            
             playSound()
+            //A bug was found where a user can click 1 correct colour 3 times win the game
+            chosenElement.style.pointerEvents = "none";     
 
         } else {
             console.log("Incorrect!")
             this.style.visibility = "hidden"
             iTag.classList.add('fa-circle-xmark');
-            iconWrapper.appendChild(iTag)
+            iconWrapper.appendChild(iTag);
 
         }    
     }
@@ -73,16 +77,16 @@ function whenCircleClicked(event){
         
         //TODO: change background colour -- confetti
         const button = document.getElementsByTagName("button");
-        gameOver = true
 
     }
 }
 
 function playSound(){
         //const audio = document.querySelector(`audio[data-char="${event.key}"]`)
-        const audio = document.querySelector(`audio[data-char="Escape"]`)
+        const audio = document.querySelector(`audio[data-char="Escape"]`);
         audio.play();
 }
+
 
 //main code
 let count = 0;
@@ -100,10 +104,10 @@ while(elements.length > 0){
     elements[0].parentNode.removeChild(elements[0]);
 } //A better ES6 way document.querySelectorAll(".remove").forEach(el => el.remove());
 
-const divWrapper = document.getElementsByClassName("wrapper")[0]
+const divWrapper = document.getElementsByClassName("wrapper")[0];
 
 const inputs = document.querySelectorAll('.controls input');
-inputs.forEach(input => input.addEventListener("change", colourChange))
+inputs.forEach(input => input.addEventListener("change", colourChange));
 inputs.forEach(input => input.addEventListener('mousemove', colourChange));
 
 let circles = document.querySelectorAll('.wrapper div');
