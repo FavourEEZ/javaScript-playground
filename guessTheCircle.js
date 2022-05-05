@@ -47,12 +47,14 @@ function whenCircleClicked(event){
     
         const chosenElement = event.target;
         if (parseInt(chosenElement.id) === randomNumber1 || parseInt(chosenElement.id) === randomNumber2 || parseInt(chosenElement.id) === randomNumber3 ){
+            //Change the colour of the circles and add the icons
             chosenElement.style.borderColor="green";
             countCorrect +=1;
             console.log("Correct!");
             iTag.classList.add('fa-circle-check');
             iconWrapper.appendChild(iTag)
-            //TODO Circular icons appear, green tick if correct, red if incorrect
+
+
         } else {
             console.log("Incorrect!")
             this.style.visibility = "hidden"
@@ -73,6 +75,19 @@ function whenCircleClicked(event){
         const button = document.getElementsByTagName("button");
         gameOver = true
 
+    }
+}
+
+function playSound(event){
+    console.log(`Keydown event: ${event.key}`)
+    if (event.key == "Escape"){
+        console.log("Escape!!")
+        const audio = document.querySelector(`audio[data-char="${event.key}"]`)
+        // audio.currentTime = 0;
+        audio.play();
+        setTimeout(()=>{
+            resetPage();
+        }, 100)
     }
 }
 
@@ -101,3 +116,9 @@ inputs.forEach(input => input.addEventListener('mousemove', colourChange));
 let circles = document.querySelectorAll('.wrapper div');
 circles.forEach(circle => circle.addEventListener("click", whenCircleClicked));
 
+window.addEventListener("keydown", (event)=>{
+    playSound(event);
+    setTimeout(()=>{
+        resetPage();
+    }, 100)
+})
